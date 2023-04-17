@@ -27,6 +27,22 @@ export default {
 </script>
 
 <style>
+.title-application {
+    text-align: center;
+    font-size: 1em;
+    max-width: 400px;
+    width: 90%;
+}
+
+.filed-aplication {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container-start-application {
     height: 100%;
     width: 100%;

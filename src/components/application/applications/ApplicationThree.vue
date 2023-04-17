@@ -1,11 +1,11 @@
 <template>
     <div class="filed-aplication">
-        <div class="title-application">
-            <h1> приложение с использованием v-for</h1>
+        <div class="title-application" >
+            <h1> приложение с использованием v-show</h1> 3
         </div>
-        <div class="drawing-lists" v-for="(listOfElement) in listOfElements" :key="listOfElement.id">
-            <h3> {{ listOfElement.title }}</h3>
-            <h3> id element: {{ listOfElement.id }}</h3>
+        <div class="element-visibility">
+            <p v-show="visibility"> Element </p>
+            <button @click="visibility = !visibility">{{ visibility ? 'Скрыть Element' : 'Показать Element' }}</button>
         </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -14,14 +14,12 @@
 </template>
 <script>
 import ButtonBack from '@/components/buttons/ButtonBack.vue';
+
 import { mapMutations, mapState } from 'vuex';
-import listOfElements from '../../../../json_components_names/listOf-v-for-elements.json'
-
-
 export default {
     data() {
-        return{
-            listOfElements:listOfElements.listElements
+        return {
+            visibility: true
         }
     },
     components: {
@@ -39,6 +37,11 @@ export default {
     }
 }
 </script>
-<style >
-
+<style scoped>
+.element-visibility{
+    text-align: center;
+}
+.element-visibility button{
+    margin: 10px;
+}
 </style>

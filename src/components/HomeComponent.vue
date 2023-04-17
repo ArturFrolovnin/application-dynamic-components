@@ -14,14 +14,37 @@ import { mapState } from 'vuex';
 import StartApplication from './application/StartApplication.vue';
 import ApplicationForm from './application/applications/ApplicationForm.vue';
 import ApplicationTwo from './application/applications/ApplicationTwo.vue';
+import ApplicationThree from './application/applications/ApplicationThree.vue';
+import ApplicationFour from './application/applications/ApplicationFour.vue';
+import ApplicationFive from './application/applications/ApplicationFive.vue'
+import ApplicationSix from './application/applications/ApplicationSix.vue';
+import ApplicationSeven from './application/applications/ApplicationSeven.vue';
+import ApplicationEight from './application/applications/ApplicationEight.vue';
+import ApplicationNine from './application/applications/ApplicationNine.vue';
+import ApplicationTen from './application/applications/ApplicationTen.vue';
+import ApplicationEleven from './application/applications/ApplicationEleven.vue';
+import ApplicationTwelve from './application/applications/ApplicationTwelve.vue';
+import ApplicationThirteen from './application/applications/ApplicationThirteen.vue';
 import SettingsApplication from './setting/SettingsApplication.vue';
 import MenuSetting from './setting/menu_setting/MenuSetting.vue'
+
 export default {
     components: {
         StartApplication,
         SettingsApplication,
         ApplicationForm,
         ApplicationTwo,
+        ApplicationThree,
+        ApplicationFour,
+        ApplicationFive,
+        ApplicationSix,
+        ApplicationSeven,
+        ApplicationEight,
+        ApplicationNine,
+        ApplicationTen,
+        ApplicationEleven,
+        ApplicationTwelve,
+        ApplicationThirteen,
         MenuSetting
     },
     computed: {
@@ -57,7 +80,6 @@ export default {
 .application {
     max-width: 550px;
     max-height: 600px;
-
     min-height: 300px;
     height: 100%;
     width: 100%;

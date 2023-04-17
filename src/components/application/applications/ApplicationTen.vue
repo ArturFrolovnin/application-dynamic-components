@@ -1,12 +1,9 @@
 <template>
     <div class="filed-aplication">
-        <div class="title-application">
-            <h1> приложение с использованием v-for</h1>
+        <div class="title-application" >
+            <h1> приложение с использованием Events </h1> 10
         </div>
-        <div class="drawing-lists" v-for="(listOfElement) in listOfElements" :key="listOfElement.id">
-            <h3> {{ listOfElement.title }}</h3>
-            <h3> id element: {{ listOfElement.id }}</h3>
-        </div>
+       
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
         </div>
@@ -14,14 +11,12 @@
 </template>
 <script>
 import ButtonBack from '@/components/buttons/ButtonBack.vue';
+
 import { mapMutations, mapState } from 'vuex';
-import listOfElements from '../../../../json_components_names/listOf-v-for-elements.json'
-
-
 export default {
     data() {
-        return{
-            listOfElements:listOfElements.listElements
+        return {
+         
         }
     },
     components: {
@@ -39,6 +34,6 @@ export default {
     }
 }
 </script>
-<style >
+<style scoped>
 
 </style>

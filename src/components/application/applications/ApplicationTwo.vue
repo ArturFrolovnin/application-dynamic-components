@@ -1,10 +1,16 @@
 <template>
     <div class="filed-aplication">
         <div class="title-application">
-            <h1> приложение 2</h1>
+            <h1> приложение с использованием v-if</h1> 2
+
+        </div>
+        <div class="element-visibility" >
+            <p v-if="visibility"> Element </p>
+            <button @click="visibility = !visibility">{{ visibility ? 'Скрыть Element' : 'Показать Element' }}</button>
+          
         </div>
         <div class="button-back">
-            <ButtonBack  :functionButtonBack="exitTheApplication"/>
+            <ButtonBack :functionButtonBack="exitTheApplication" />
         </div>
     </div>
 </template>
@@ -13,15 +19,20 @@ import ButtonBack from '@/components/buttons/ButtonBack.vue';
 
 import { mapMutations, mapState } from 'vuex';
 export default {
+    data() {
+        return {
+            visibility: true
+        }
+    },
     components: {
         ButtonBack
     },
-    computed:{
+    computed: {
         ...mapState(['ComponentNames'])
     },
-    methods:{
+    methods: {
         ...mapMutations(['setComponetnApplication']),
-        exitTheApplication(){
+        exitTheApplication() {
             this.setComponetnApplication(this.ComponentNames.componentStartApplication)
         }
 
@@ -29,12 +40,15 @@ export default {
 }
 </script>
 <style scoped>
-.filed-aplication{
+.element-visibility {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+.element-visibility button{
+    margin: 10px;
 }
 </style>

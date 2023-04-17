@@ -1,11 +1,10 @@
 <template>
     <div class="filed-aplication">
         <div class="title-application">
-            <h1> приложение с использованием v-for</h1>
+            <h1> приложение с использованием Created </h1> 4
         </div>
-        <div class="drawing-lists" v-for="(listOfElement) in listOfElements" :key="listOfElement.id">
-            <h3> {{ listOfElement.title }}</h3>
-            <h3> id element: {{ listOfElement.id }}</h3>
+        <div>
+            
         </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -14,21 +13,28 @@
 </template>
 <script>
 import ButtonBack from '@/components/buttons/ButtonBack.vue';
+
 import { mapMutations, mapState } from 'vuex';
-import listOfElements from '../../../../json_components_names/listOf-v-for-elements.json'
-
-
 export default {
+
     data() {
-        return{
-            listOfElements:listOfElements.listElements
+        return {
+            property: 'Blank'
         }
+    },
+    created() {
+        this.property = 'Example property update.'
     },
     components: {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames']),
+        propertyComputed() {
+            return this.property
+            // console.log('счётчик: ' + this.count) 
+
+        }
     },
     methods: {
         ...mapMutations(['setComponetnApplication']),
@@ -39,6 +45,4 @@ export default {
     }
 }
 </script>
-<style >
-
-</style>
+<style scoped></style>

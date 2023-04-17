@@ -7,6 +7,7 @@ import sizeFonts from '../json_components_names/sizeFonts.json'
 
 
 
+
 const store = createStore({
     state(){
         return{
