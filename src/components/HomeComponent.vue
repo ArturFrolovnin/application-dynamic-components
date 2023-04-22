@@ -1,76 +1,81 @@
 <template>
     <div class="main-container">
-        <div class="application">
-            <component :is="StartApplication"></component>
-        </div>
-        <div class="setting-application">
-            <component :is="SettingsApplication"></component>
-        </div>
+        <div class="flex-container-application"> 
+            <div class="application">
+                <component :is="StartPageApplication"> </component>
+            </div>
+            <div class="setting-application">
+                <component :is="StartPageApplicationSetting"> </component>
+            </div>
+      </div>
     </div>
 </template>
-  
+
 <script>
 import { mapState } from 'vuex';
-import StartApplication from './application/StartApplication.vue';
-import ApplicationForm from './application/applications/ApplicationForm.vue';
-import ApplicationTwo from './application/applications/ApplicationTwo.vue';
-import ApplicationThree from './application/applications/ApplicationThree.vue';
-import ApplicationFour from './application/applications/ApplicationFour.vue';
-import ApplicationFive from './application/applications/ApplicationFive.vue'
-import ApplicationSix from './application/applications/ApplicationSix.vue';
-import ApplicationSeven from './application/applications/ApplicationSeven.vue';
-import ApplicationEight from './application/applications/ApplicationEight.vue';
-import ApplicationNine from './application/applications/ApplicationNine.vue';
-import ApplicationTen from './application/applications/ApplicationTen.vue';
-import ApplicationEleven from './application/applications/ApplicationEleven.vue';
-import ApplicationTwelve from './application/applications/ApplicationTwelve.vue';
-import ApplicationThirteen from './application/applications/ApplicationThirteen.vue';
-import SettingsApplication from './setting/SettingsApplication.vue';
-import MenuSetting from './setting/menu_setting/MenuSetting.vue'
-
+import StartPageApplication from './applications/StartPageApplication.vue';
+import StartPageApplicationSetting from './applications/StartPageApplicationSetting.vue';
+import MenuSetting from './applications/MenuSetting.vue';
+import List_Rendering from './applications/ListRendering.vue';
+import Conditional_Rendering from './applications/ConditionalRendering.vue';
+import Created from './applications/ComponentCreated.vue';
+import Computed from './applications/ComponentComputed.vue';
+import Data from './applications/ComponentData.vue';
+import Json_Import from './applications/ComponentJsonImport.vue';
+import Event_Handling from './applications/EventHandling.vue';
+import Methods from './applications/ComponentMethods.vue';
+import V_Model from './applications/ComponentVModel.vue';
+import Watchers from './applications/ComponentWatchers.vue';
+import To_Do_List from './applications/ApplicationToDoList.vue';
+import Custom_Select from './ui/custom_select/ComponentCustomSelect.vue';
+   
 export default {
     components: {
-        StartApplication,
-        SettingsApplication,
-        ApplicationForm,
-        ApplicationTwo,
-        ApplicationThree,
-        ApplicationFour,
-        ApplicationFive,
-        ApplicationSix,
-        ApplicationSeven,
-        ApplicationEight,
-        ApplicationNine,
-        ApplicationTen,
-        ApplicationEleven,
-        ApplicationTwelve,
-        ApplicationThirteen,
-        MenuSetting
+        StartPageApplication,
+        StartPageApplicationSetting,
+        MenuSetting,
+        List_Rendering,
+        Conditional_Rendering,
+        Created,
+        Computed,
+        Data,
+        Json_Import,
+        Event_Handling,
+        Methods,
+        V_Model,
+        Watchers,
+        To_Do_List,
+        Custom_Select
     },
     computed: {
-        ...mapState(['StartApplication', "SettingsApplication"])
+        ...mapState(["StartPageApplication", "StartPageApplicationSetting"])
     }
 }
 </script>
-<style>
 
+<style>
 .main-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     max-width: 1100px;
     max-height: 600px;
-    height: 80%;
-    width: 80%;
+    height: 100%;
+    width: 100%;
+}
 
-    border: solid 2px black;
-   
+.flex-container-application {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 
 .setting-application {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 550px;
-    max-height: 600px;
-    min-height: 300px;
+    min-height: 550px;
     height: 100%;
     width: 100%;
     background-color: var(--application-setting-background-color);
@@ -78,9 +83,10 @@ export default {
 }
 
 .application {
-    max-width: 550px;
-    max-height: 600px;
-    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
     height: 100%;
     width: 100%;
     background-color: var(--application-background-color);
@@ -97,13 +103,20 @@ export default {
     z-index: 15;
 }
 
-@media screen and (max-width: 850px) {
-    .main-container {
+@media screen and (max-width: 950px) {
+    .flex-container-application{
         flex-direction: column;
+    }
+    .main-container {
         max-width: 550px;
         height: 100%;
-
+        width: 95%;
+    }
+    .setting-application {
+        min-width: 300px;
+    }
+    .application {
+        min-width: 300px;
     }
 }
 </style>
-  

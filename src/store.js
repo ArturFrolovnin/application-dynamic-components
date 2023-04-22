@@ -1,49 +1,44 @@
 import { createStore } from "vuex";
-import ComponentNames from '../json_components_names/componentNames.json'
-import ApplicationSelection from '../json_components_names/ApplicationSelection.json'
-import themes from '../json_components_names/themes.json'
-import fonts from '../json_components_names/fonts.json'
-import sizeFonts from '../json_components_names/sizeFonts.json'
-
-
-
-
+import ComponentNames from '../src/data/application/componentNames.json'
+import applicationsSelection from '../src/data/application/applicationsSelection.json'
+import themes from '../src/data/themes/themes.json'
+import fonts from '../src/data/fonts/fonts.json'
+import sizeFonts from '../src/data/fonts/sizeFonts.json'
 const store = createStore({
     state(){
         return{
-            ComponentNames: ComponentNames,
-            StartApplication: ComponentNames.componentStartApplication,
-            SettingsApplication: ComponentNames.ComponentSettingsApplication,
-            MenuSetting:ComponentNames.ComponentMenuSetting,
-            ApplicationSelection,
-            selectedApplication:ApplicationSelection.ApplicationForm,
+            ComponentNames:ComponentNames,
+            StartPageApplication:ComponentNames.componentStartPageApplication,
+            StartPageApplicationSetting:ComponentNames.componentStartPageApplicationSetting,
+            MenuSetting:ComponentNames.componentMenuSetting,
+            applicationsSelection,
+            selectedApplication:applicationsSelection.ListRendering,
             themes,
             selectedThemes:themes.defaultTheme,
             fonts,
-            selectedFont: fonts.DefultFont,
+            selectedFont:fonts.DefaultFont,
             sizeFonts,
-            selectedSizeFonts:sizeFonts.DefultSizeFont
+            selectedSizeFonts:sizeFonts.DefaultSizeFont
         }
     },
     mutations:{
-        setComponetnApplication(state ,component){
-           state.StartApplication = component;
+        setComponentApplication( state, StartPage){
+            state.StartPageApplication = StartPage;
         },
-        setSelectedApplication(state , component){
-            state.selectedApplication = component;
-         },
-        setComponetnSetting(state,component){
-            state.SettingsApplication = component;
+        setComponentSetting(state, StartPageSetting){
+            state.StartPageApplicationSetting = StartPageSetting;
         },
-        setSelectedThemes(state,component){
-            state.selectedThemes = component;
+        setSelectedApplication(state, Application){
+            state.selectedApplication = Application;
+        },       
+        setSelectedThemes(state, Themes){
+            state.selectedThemes = Themes;
         },
-        setSelectedFont(state, component){
-            state.selectedFont = component;
-            console.log(component)
+        setSelectedFont(state, Font){
+            state.selectedFont = Font;
         },
-        setSelectedSizeFonts(state, component){
-            state.selectedSizeFonts = component;
+        setSelectedSizeFonts(state, SizeFonts){
+            state.selectedSizeFonts = SizeFonts;
         }
     }
 })

@@ -1,4 +1,4 @@
-# project-dynamic-components
+# project-dynamic-component
 
 ## Project setup
 ```

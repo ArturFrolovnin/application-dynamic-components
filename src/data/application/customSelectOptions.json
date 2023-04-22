@@ -1,0 +1,27 @@
+[
+    {
+        "optionTitle": "Option-1",
+        "optionImg": "./assets/Img_for_custom_select/cat.jpg",
+        "value":0
+    },
+    {
+        "optionTitle": "Option-2",
+        "optionImg": "./assets/Img_for_custom_select/cat2.jpg",
+        "value":1
+    },
+    {
+        "optionTitle": "Option-3",
+        "optionImg": "./assets/Img_for_custom_select/person1.jpg",
+        "value":2
+    },
+    {
+        "optionTitle": "Option-4",
+        "optionImg": "./assets/Img_for_custom_select/person3.jpg",
+        "value":3
+    },
+    {
+        "optionTitle": "Option-5",
+        "optionImg": "./assets/Img_for_custom_select/will-shrek.jpg",
+        "value":4
+    }
+]

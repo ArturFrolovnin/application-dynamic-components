@@ -1,15 +1,14 @@
 <template>
-  <div class="aplication" :class="[this.selectedFont, this.selectedSizeFonts, this.selectedThemes]">
+  <div class="application-container" :class="[this.selectedFont, this.selectedSizeFonts, this.selectedThemes]" >
     <HomeComponent />
   </div>
-  <ThemeApplication />
+  <ThemeApplication/>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import HomeComponent from './components/HomeComponent.vue';
-import ThemeApplication from './components/themes/ThemeApplication.vue';
-
+import ThemeApplication from './components/ui/themes/ThemeApplication.vue';
 export default {
   name: 'App',
   components: {
@@ -21,6 +20,7 @@ export default {
   }
 }
 </script>
+
 <style>
 :root {
   --application-background-color: rgba(107, 75, 210, 0.95);
@@ -29,13 +29,23 @@ export default {
   --application-setting-background-color: rgba(135, 110, 217, 0.95);
   --application-setting-hover-outline: rgb(74, 59, 119);
   --application-setting-color: white;
-  --application-font-size-defult: 1em;
-  --application-font-size-large: 1.1em;
-  --application-font-size-medium: 1em;
-  --application-font-size-small: 0.8em;
+  --application-font-size-defualt: calc(10px + 5 * (100vw/1980));;
+  --application-font-size-large:  calc(12px + 5 * (100vw/1980));;
+  --application-font-size-medium: calc(10px + 5 * (100vw/1980));;
+  --application-font-size-small:  calc(5px + 5 * (100vw/1980));;
   --application-font-sans-serif: sans-serif;
   --application-font-roboto: "roboto", sans-serif;
   --application-font-times: "Times New Roman", sans-serif;
+  --custom-selection-background: rgb(174, 169, 190);
+  --custom-selection-hover-outline:black;
+  --dropdown-list-background: rgb(174, 169, 190);
+  --option-dropdown-list-hover:black;
+  --form-application-background-color: rgba(216, 209, 222, 0.706); 
+  --error-message-color: red;
+  --list-notes-item-background-color: white;
+  --list-notes-item-color: black;
+  --delete-note-background: rgb(241, 0, 0);
+  --delete-note-after-background-color: white;
 }
 
 * {
@@ -51,7 +61,7 @@ body,
   width: 100%;
 }
 
-.aplication {
+.application-container {
   height: 100%;
   width: 100%;
   display: flex;
