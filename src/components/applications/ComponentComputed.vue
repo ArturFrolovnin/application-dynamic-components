@@ -1,13 +1,13 @@
 <template>
     <div class="filed-application">
         <div class="title-application">
-            <h1> приложение с использованием Computed </h1> 
+            <h1>{{ language['Application using Computed'] }}</h1> 
         </div>
         <div class="number-counter">
-            <h3> counter:{{ counter }}</h3>
-            <h3> counter: {{ result }}</h3>
-            <button @click="increment"> increment</button>
-            <button @click="decrement"> decrement</button>
+            <h3> {{ language['counter'] }}:{{ counter }}</h3>
+            <h3> {{ language['counter'] }}:{{ result }}</h3>
+            <button @click="increment"> {{ language['increment'] }} </button>
+            <button @click="decrement"> {{ language['decrement'] }} </button>
         </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -30,10 +30,13 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames']),
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
         result() {
-            return this.counter > 5 ? 'больше 5' : 'меньше 5'
-        }
+            return this.counter > 5 ? this.language['more']  :this.language['less'];
+        },
     },
     methods: {
         ...mapMutations(['setComponentApplication']),
@@ -47,7 +50,7 @@ export default {
         decrement() {
             if (this.counter <= this.counterLimitDecrement) return;
             this.counter--
-        }
+        },
     }
 }
 </script>

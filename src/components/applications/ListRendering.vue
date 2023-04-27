@@ -1,7 +1,7 @@
 <template>
     <div class="filed-application">
         <div class="title-application">
-            <h1>приложение с использованием v-for</h1>
+            <h1>{{language['Application using v-for']}}</h1>
         </div>
         <div class="drawing-lists" 
             v-for="(listOfElement) in listOfElements" :key="listOfElement.id"
@@ -22,20 +22,23 @@ import ListElements from '../../data/application/ListElements.json';
 export default {
     data() {
         return{
-            listOfElements:ListElements.listElements
+            listOfElements:ListElements
         }
     },
     components: {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames','languageData','componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }
     },
     methods: {
         ...mapMutations(['setComponentApplication']),
         exitTheApplication() {
             this.setComponentApplication(this.ComponentNames.componentStartPageApplication)
-        }
+        },
     }
 }
 </script>

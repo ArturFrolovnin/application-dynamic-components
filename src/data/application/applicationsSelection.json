@@ -1,14 +1,15 @@
 {
-    "ListRendering":"List_Rendering",
-    "ConditionalRendering":"Conditional_Rendering",
-    "ComponentCreated":"Created",
-    "ComponentComputed":"Computed",
-    "ComponentData":"Data",
-    "ComponentJsonImport":"Json_Import",
-    "EventHandling":"Event_Handling",
-    "ComponentMethods":"Methods",
-    "ComponentVModel":"V_Model",
-    "ComponentWatchers":"Watchers",
-    "ApplicationToDoList":"To_Do_List",
-    "ComponentCustomSelect":"Custom_Select"
+    "ListRendering":"ListRendering",
+    "ConditionalRendering":"ConditionalRendering",
+    "ComponentCreated":"ComponentCreated",
+    "ComponentComputed":"ComponentComputed",
+    "ComponentData":"ComponentData",
+    "ComponentJsonImport":"ComponentJsonImport",
+    "EventHandling":"EventHandling",
+    "ComponentMethods":"ComponentMethods",
+    "ComponentVModel":"ComponentVModel",
+    "ComponentWatchers":"ComponentWatchers",
+    "ApplicationToDoList":"ApplicationToDoList",
+    "ComponentCustomSelect":"ComponentCustomSelect",
+    "TestComponent": "TestComponent"
 }

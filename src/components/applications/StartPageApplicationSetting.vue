@@ -14,12 +14,12 @@ export default {
         ButtonOpenSetting
     },
     computed:{
-        ...mapState(["MenuSetting"])
+        ...mapState(["selectedSettingsMenu"])
     },
     methods:{
         ...mapMutations(["setComponentSetting"]),
         openSetting(){
-            this.setComponentSetting(this.MenuSetting)
+            this.setComponentSetting(this.selectedSettingsMenu)
         }
     }
 }

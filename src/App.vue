@@ -1,5 +1,5 @@
 <template>
-  <div class="application-container" :class="[this.selectedFont, this.selectedSizeFonts, this.selectedThemes]" >
+  <div class="application-container" :class="[this.selectedFont, this.selectedSizeFonts, this.selectedTheme]" >
     <HomeComponent />
   </div>
   <ThemeApplication/>
@@ -16,7 +16,7 @@ export default {
     ThemeApplication
   },
   computed: {
-    ...mapState(["selectedFont", "selectedSizeFonts", "selectedThemes"])
+    ...mapState(["selectedFont", "selectedSizeFonts", "selectedTheme"])
   }
 }
 </script>
@@ -33,9 +33,9 @@ export default {
   --application-font-size-large:  calc(12px + 5 * (100vw/1980));;
   --application-font-size-medium: calc(10px + 5 * (100vw/1980));;
   --application-font-size-small:  calc(5px + 5 * (100vw/1980));;
-  --application-font-sans-serif: sans-serif;
-  --application-font-roboto: "roboto", sans-serif;
-  --application-font-times: "Times New Roman", sans-serif;
+  --application-font-sans-serif: Arial;
+  --application-font-roboto: "roboto";
+  --application-font-times: "Times New Roman";
   --custom-selection-background: rgb(174, 169, 190);
   --custom-selection-hover-outline:black;
   --dropdown-list-background: rgb(174, 169, 190);

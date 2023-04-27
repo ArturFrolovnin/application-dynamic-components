@@ -1,11 +1,11 @@
 <template>
     <div class="filed-application">
         <div class="title-application" >
-            <h1>приложение с использованием Methods</h1> 
+            <h1>{{ language['Application using Methods'] }}</h1> 
         </div>
        <div>
-         <h3>  counter: {{ counter }}</h3>
-            <button @click="increment">add +1</button>
+         <h3>  {{language['counter']}}: {{ counter }}</h3>
+            <button @click="increment"> {{ language['increment'] }}</button>
        </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -26,7 +26,10 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
     },
     methods: {
         ...mapMutations(['setComponentApplication']),

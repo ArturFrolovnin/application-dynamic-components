@@ -12,43 +12,53 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import StartPageApplication from './applications/StartPageApplication.vue';
 import StartPageApplicationSetting from './applications/StartPageApplicationSetting.vue';
 import MenuSetting from './applications/MenuSetting.vue';
-import List_Rendering from './applications/ListRendering.vue';
-import Conditional_Rendering from './applications/ConditionalRendering.vue';
-import Created from './applications/ComponentCreated.vue';
-import Computed from './applications/ComponentComputed.vue';
-import Data from './applications/ComponentData.vue';
-import Json_Import from './applications/ComponentJsonImport.vue';
-import Event_Handling from './applications/EventHandling.vue';
-import Methods from './applications/ComponentMethods.vue';
-import V_Model from './applications/ComponentVModel.vue';
-import Watchers from './applications/ComponentWatchers.vue';
-import To_Do_List from './applications/ApplicationToDoList.vue';
-import Custom_Select from './ui/custom_select/ComponentCustomSelect.vue';
+import MenuSettingCustomSelect from './applications/MenuSettingCustomSelect.vue';
+import ListRendering from './applications/ListRendering.vue';
+import ConditionalRendering from './applications/ConditionalRendering.vue';
+import ComponentCreated from './applications/ComponentCreated.vue';
+import ComponentComputed from './applications/ComponentComputed.vue';
+import ComponentData from './applications/ComponentData.vue';
+import ComponentJsonImport from './applications/ComponentJsonImport.vue';
+import EventHandling from './applications/EventHandling.vue';
+import ComponentMethods from './applications/ComponentMethods.vue';
+import ComponentVModel from './applications/ComponentVModel.vue';
+import ComponentWatchers from './applications/ComponentWatchers.vue';
+import ApplicationToDoList from './applications/ApplicationToDoList.vue';
+import ComponentCustomSelect from './ui/custom_select/ComponentCustomSelect.vue';
+import TestComponent from '@/test/TestComponent.vue';
    
 export default {
     components: {
         StartPageApplication,
         StartPageApplicationSetting,
         MenuSetting,
-        List_Rendering,
-        Conditional_Rendering,
-        Created,
-        Computed,
-        Data,
-        Json_Import,
-        Event_Handling,
-        Methods,
-        V_Model,
-        Watchers,
-        To_Do_List,
-        Custom_Select
+        MenuSettingCustomSelect,
+        ListRendering,
+        ConditionalRendering,
+        ComponentCreated,
+        ComponentComputed,
+        ComponentData,
+        ComponentJsonImport,
+        EventHandling,
+        ComponentMethods,
+        ComponentVModel,
+        ComponentWatchers,
+        ApplicationToDoList,
+        ComponentCustomSelect,
+        TestComponent
     },
     computed: {
         ...mapState(["StartPageApplication", "StartPageApplicationSetting"])
+    },
+    methods:{
+        ...mapActions(['defineLanguageData'])
+    },
+    created(){
+        this.defineLanguageData();
     }
 }
 </script>

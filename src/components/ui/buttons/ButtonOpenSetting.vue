@@ -2,7 +2,7 @@
     <div class="Container-button-seting">
         <div class="img-button-setting">
             <img class="img-button-setting"
-                src="../../../assets/ui_elements/settings.png"
+                src="../../../../public/assets/ui_elements/settings.png"
                 @click="functionButtonOpenSetting()" 
             >
         </div>

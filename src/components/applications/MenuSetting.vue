@@ -1,21 +1,21 @@
 <template>
     <div class="menu-setting">
         <div class="title-setting-select">
-            <h1>настройки приложения </h1>
+            <h1>{{ language['application settings'] }}</h1>
         </div>
         <div class="setting-component">
             <div class="title-setting-component">
-                <h2> Выберете тему приложения</h2>
+                <h2>{{ language['Select the application theme'] }}</h2>
             </div>
             <ComponentVueSelect 
-                :selectOptions="themes" 
+                :selectedOption="selectedTheme " 
+                :selectOptions="themes"
                 :mutation="setSelectedThemes" 
-                :selectedOption="selectedThemes" 
             />
         </div>
         <div class="setting-component">
             <div class="title-setting-component">
-                <h2> Выберете приложение</h2>
+                <h2>{{ language['Select an application'] }} </h2>
             </div>
             <ComponentVueSelect 
                 :selectOptions="applicationsSelection" 
@@ -23,9 +23,10 @@
                 :selectedOption="selectedApplication" 
             />
         </div>
+  
         <div class="setting-component">
             <div class="title-setting-component">
-                <h2> Выберете шрифт</h2>
+                <h2> {{ language['Choose a font'] }} </h2>
             </div>
             <ComponentVueSelect 
                 :selectOptions="fonts" 
@@ -35,7 +36,7 @@
         </div>
         <div class="setting-component">
             <div class="title-setting-component">
-                <h2> Выберете размер шрифта </h2>
+                <h2> {{ language['Choose the font size'] }} </h2>
             </div>
             <ComponentVueSelect 
                 :selectOptions="sizeFonts" 
@@ -43,6 +44,19 @@
                 :selectedOption="selectedSizeFonts" 
             />
         </div>
+        <div class="setting-component">
+            <div class="title-setting-component">
+                <h2>{{ language['settings on custom selectors'] }} </h2>
+            </div>
+            <ComponentVueSelect 
+                :selectOptions="selectingSettingsMenu" 
+                :mutation="setSelectedSettingsMenu"
+                :selectedOption="selectedSettingsMenu" 
+            />
+        </div>
+        <button @click="defineLanguageData(selectedLanguage === languages.RUSSIAN ? languages.ENGLISH : languages.RUSSIAN  )" >
+            {{ selectedLanguage === languages.RUSSIAN ?  "ENGLISH": "РУССКИЙ" }}
+         </button>
         <div class="button-back-holder">
             <ButtonBack :functionButtonBack="backStartSetting" />
         </div>
@@ -50,19 +64,51 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState, mapActions } from 'vuex';
+import languages from '../../data/language/language.json'
 import ComponentVueSelect from '../ui/vue_select/ComponentVueSelect.vue';
 import ButtonBack from '../ui/buttons/ButtonBack.vue';
 export default {
+    data(){
+        return{
+            languages:languages
+        }
+}   ,
     components: {
         ComponentVueSelect,
         ButtonBack,
     },
     computed: {
-        ...mapState(['ComponentNames', 'fonts', 'selectedFont', 'sizeFonts', 'selectedSizeFonts', 'applicationsSelection', 'selectedApplication', 'themes', 'selectedThemes'])
+        ...mapState([
+            'ComponentNames', 
+            'selectingSettingsMenu', 
+            'selectedSettingsMenu',  
+            'fonts', 
+            'selectedFont', 
+            'sizeFonts', 
+            'selectedSizeFonts', 
+            'applicationsSelection', 
+            'selectedApplication', 
+            'themes', 
+            'selectedTheme',
+            'languageData',
+            'selectedLanguage',
+            'componentLanguage',
+        ]),
+        language() { 
+            return this.languageData[this.componentLanguage.SETTINGS_HEADER] || {}
+        }
     },
     methods: {
-        ...mapMutations(['setComponentSetting', 'setSelectedFont', 'setSelectedSizeFonts', 'setSelectedApplication', 'setSelectedThemes']),
+        ...mapMutations([
+            'setComponentSetting',
+            'setSelectedSettingsMenu', 
+            'setSelectedFont', 
+            'setSelectedSizeFonts', 
+            'setSelectedApplication', 
+            'setSelectedThemes',
+        ]),
+        ...mapActions(['defineLanguageData']),
         backStartSetting() {
             this.setComponentSetting(this.ComponentNames.componentStartPageApplicationSetting)
         },

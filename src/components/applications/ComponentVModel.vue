@@ -1,11 +1,11 @@
 <template>
     <div class="filed-application">
         <div class="title-application" >
-            <h1> приложение с использованием V-model  </h1> 12
+            <h1> {{ language['Application using V-model'] }} </h1> 
         </div>
         <div class="text-input">
             <input type="text"  v-model="textMessage">
-            <p>input text: {{ textMessage }} </p>
+            <p>{{ language['input text'] }}: {{ textMessage }} </p>
         </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -26,7 +26,10 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
     },
     methods: {
         ...mapMutations(['setComponentApplication']),

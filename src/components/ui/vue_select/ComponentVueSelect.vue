@@ -1,39 +1,48 @@
-<template> 
-    <div class="form-select-setting"> 
-        <select class="selectable-option"  v-model="selected" @change="selectOption()"  > 
-           <option v-for="(option, index) in optionsKeys" :key="index"> 
-            {{ selectOptions[option] }} 
-           </option> 
-        </select> 
-    </div> 
+<template>
+    <div class="form-select-setting">
+        <select class="selectable-option" v-model="selected" @change="selectOption()">
+            <option v-for="(option, index) in optionsKeys" :key="index">
+                {{ selectOptions[option] }}
+            </option>
+        </select>
+
+    </div>
 </template> 
  
-<script> 
-export default { 
-    data(){ 
-        return{ 
+<script>
+import { mapState } from 'vuex';
+export default {
+    data() {
+        return {
             optionsKeys: [],
-            selected: this.selectedOption 
-        } 
-    }, 
-    props: { 
-        selectOptions: { 
-            type: Object, 
-        }, 
-        mutation: { 
-            type: Function, 
-        },
+            selected: this.selectedOption
+        }
+    },
+    props: {
         selectedOption: {
             type: String
-        } 
-    }, 
-    methods:{ 
-        selectOption(){ 
-            this.mutation(this.selected);
-        } 
+        },
+        selectOptions: {
+            type: Object,
+        },
+        mutation: {
+            type: Function,
+        },
+
     },
-    created(){
+    methods: {
+        selectOption() {
+            this.mutation(this.selected);
+        }
+    },
+    created() {
         this.optionsKeys = Object.keys(this.selectOptions);
+    },
+    computed: {
+        ...mapState(['languageData', 'componentLanguage']),
+        language() {
+            return this.languageData[this.componentLanguage.SELECT] || {}
+        },
     }
 } 
 </script> 

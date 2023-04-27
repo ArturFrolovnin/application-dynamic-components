@@ -1,0 +1,12 @@
+[
+      {
+        "theme": "defaultTheme",
+        "title": " тема 1",
+        "value": 0
+    },
+    {
+        "theme": " anothertopic",
+        "title": " тема 2",
+        "value": 1
+    }
+]

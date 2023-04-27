@@ -1,8 +1,8 @@
 <template>
     <div class="application-custom-selection">
-        <div class="title-application-custom-selection">
-            <h1> Кастомный селект</h1>
-        </div>
+       <div class="title-application">
+            <h2> {{ language['An application using a custom selector'] }} </h2>
+       </div>
         <div class="container-custom-selection" 
             @click="toggleSelect"
         >
@@ -51,7 +51,10 @@ export default {
         SelectOption
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames','languageData','componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }
     },
     methods: {
         ...mapMutations(['setComponentApplication']),
@@ -59,8 +62,9 @@ export default {
             this.setComponentApplication(this.ComponentNames.componentStartPageApplication)
         },
         select(selectedItem) {  
-            this.currentState = selectedItem;
             this.isOpen = true;
+            this.currentState = selectedItem;
+            
         },
         toggleSelect(){
             this.isOpen = !this.isOpen          
@@ -91,7 +95,6 @@ export default {
     display: flex;
     align-items: center;    
 }
-
 .custom-selection:hover {
     cursor: pointer;
     outline: solid 1px var(--custom-selection-hover-outline);

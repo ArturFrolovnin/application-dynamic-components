@@ -1,10 +1,10 @@
 <template>
     <div class="filed-application">
         <div class="title-application">
-            <h1> приложение с использованием Created </h1> 
+            <h1>{{ language['Application using Created'] }}</h1> 
         </div>
         <div>
-           <h3> {{ currentComponent }}</h3>
+           <h3> {{ language[currentComponent] }}</h3>
         </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -22,13 +22,16 @@ export default {
         }
     },
     created() {
-     this.currentComponent = "created new Component"
+     this.currentComponent = 'Created new Component'
     },
     components: {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])  
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }  
     },
     methods: {
         ...mapMutations(['setComponentApplication']),

@@ -2,7 +2,7 @@
     <div class="container-button-back-setting">
         <div class="img-button-back">
             <img class="img-back"
-                src="../../../assets/ui_elements/back.png" 
+                src="../../../../public/assets/ui_elements/back.png" 
                 @click="functionButtonBack()"
             >
         </div>

@@ -1,12 +1,12 @@
 <template>
     <div class="filed-application">
         <div class="title-application">
-            <h1> приложение с использованием Watch </h1> 
+            <h1> {{ language['An application using Watch'] }} </h1> 
         </div>
         <div>
-            <h2> Вычисление факториала числа </h2>
-            <h3> Введите число:<input type="text" maxlength="2" v-model="number"></h3>
-            <h4>Факториал числа: {{ result }} </h4>
+            <h2>{{ language['Calculating the factorial of a number'] }} </h2>
+            <h3>{{ language['Enter a number'] }}:<input type="text" maxlength="2" v-model="number"></h3>
+            <h4>{{ language['Factorial of a number'] }} {{ result }} </h4>
         </div>
         <div class="button-back">
             <ButtonBack :functionButtonBack="exitTheApplication" />
@@ -35,7 +35,10 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
     },
     methods: {
         ...mapMutations(['setComponentApplication']),
@@ -48,7 +51,7 @@ export default {
             for (var index = 1; index <= newNumber; index++) {
                 recordingValue = recordingValue * index;
             }
-            newResult = newNumber + ' равен ' + recordingValue;
+            newResult = newNumber +  this.language['equal to'] +  recordingValue;
             this.result = newResult;
         }
     }

@@ -1,4 +1,4 @@
-{
-    "defaultTheme": "theme-1",
-    "anothertopic": "theme-2"
+{      
+    "defaultTheme": "defaultTheme",
+    "nonstandard": "nonstandard"
 }

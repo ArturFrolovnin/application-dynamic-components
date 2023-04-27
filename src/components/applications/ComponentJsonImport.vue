@@ -1,7 +1,7 @@
 <template>
     <div class="filed-application">
         <div class="title-application" >
-            <h1>приложение с использованием Json import</h1> 
+            <h1>{{ language['Application using json import'] }}</h1> 
         </div>
         <div>
             {{theme}}
@@ -26,7 +26,10 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
     },
     methods: {
         ...mapMutations(['setComponentApplication']),

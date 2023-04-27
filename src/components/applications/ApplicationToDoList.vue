@@ -2,15 +2,15 @@
     <div class="application-to-do-list">
         <div class="container-form">
             <div class="title-application">
-                <h2> Приложение список дел</h2>
+                <h2> {{ language['Application to-do list'] }}</h2>
             </div>
             <div class="form-application">
                 <input type="text" 
-                    placeholder="Введите заметку" 
+                    :placeholder="language['Enter a note']"
                     v-model="inputText"
                     @keydown="isNumbers($event)"
                 >
-                <button @click="addNotesTolist" :disabled="!disabledButton">добавить</button>
+                <button @click="addNotesTolist(), clearInput()" :disabled="!disabledButton">{{ language['Add'] }}</button>
             </div>
             <div class="error-message"
                 v-for="(error, index) in errorMessage" :key="index"
@@ -48,46 +48,40 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames']),
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
         disabledButton() {
             return (
                 !this.isInputEmpty(),
-                this.isNotTheLettersInInput() && 
-                this.isNotTwoWordsInInput() 
+                this.isTheLettersInInput() && 
+                this.isTwoWordsInInput() 
             )
-        },
-        isStringEmpty () {
-            return this.isInputEmpty()
-        },
-        isErrorBecauseOfSymbols() {   
-            return this.isNotTheLettersInInput(); 
-        },
-        isErrorIsRelatedToNumberOfWords() {  
-           return this.isNotTwoWordsInInput() 
         },
         errorMessage() {
             let arrayOfErrorMessages = [];
-            if(this.isStringEmpty){
+            if(this.isInputEmpty()){
                 return;
             }
-            if(!this.isErrorBecauseOfSymbols) { 
+            if(!this.isTheLettersInInput()) { 
                 arrayOfErrorMessages.push(this.errorLog.errorIsNotLetters)
             }
-            if(!this.isErrorIsRelatedToNumberOfWords) { 
+            if(!this.isTwoWordsInInput()) { 
                 arrayOfErrorMessages.push(this.errorLog.errorIsNotTwoWords);
             }
             return arrayOfErrorMessages;
         },
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
     },  
     methods: {
         ...mapMutations(['setComponentApplication']),
         isInputEmpty() {
             return this.inputText === "";
         },
-        isNotTheLettersInInput() {    
+        isTheLettersInInput() {    
             return /^[A-zА-яЁё\s]+$/.test(this.inputText); 
         },
-        isNotTwoWordsInInput() {  
+        isTwoWordsInInput() {  
             let spaceInInput = /\S+/g;
             let arrayOfValuesFromInput = this.inputText.match(spaceInInput) || [];
             return arrayOfValuesFromInput.length === 2;
@@ -104,19 +98,18 @@ export default {
             return string.charAt(0).toUpperCase() + string.slice(1);                            
         },
         convertingFirstWords(text) {
-            const words = text;
             const resultChange = [];
-            const convertString = this.convertStringToArrayOfStrings(words);
-            convertString.forEach((string)=>{
-            const lowercaseWords = string.toLowerCase();
-            const capitalizedWords = this.capitalize(lowercaseWords);
-            resultChange.push(capitalizedWords);
+            const wordArray = this.convertStringToArrayOfStrings(text);
+            wordArray.forEach((string)=>{
+                const lowercaseWords = string.toLowerCase();
+                const capitalizedWords = this.capitalize(lowercaseWords);
+                resultChange.push(capitalizedWords);
             });
+           
             return resultChange.join(" ");         
         },
         addNotesTolist() {
             this.arrayNotes.push(this.convertingFirstWords(this.inputText));
-            this.clearInput()  
         },
         clearInput() {
             this.inputText = "";
@@ -144,7 +137,6 @@ export default {
 }
 .title-application{
     margin-bottom: 5% ;
-    
 }
 
 .form-application {
@@ -157,9 +149,10 @@ export default {
     justify-content: space-evenly;
     margin-bottom: 5%;
     position: relative;
+    padding: 12px;
 }
 .form-application input {
-    margin-left:10px ;
+    padding-left: 10px;
     border-radius: 5px;
     height: 30px;
     max-width: 230px;
@@ -201,7 +194,7 @@ export default {
     border-radius: 10px;
     padding-left: 3% ;
     margin-bottom: 3%;
-    width: 278px;
+    width: 300px;
     min-height: 50px;
 }
 .text-note{

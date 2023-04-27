@@ -2,7 +2,7 @@
     <div class="container-button-start">
            <div class="img-button-start">
                <img class="img-start"
-                    src="../../../assets/ui_elements/application.png" 
+                    src="../../../../public/assets/ui_elements/application.png" 
                     @click="functionButtonOpenApplication()"
                  >
            </div>

@@ -1,12 +1,12 @@
 <template>
     <div class="filed-application">
         <div class="title-application">
-            <h1> приложение с использованием v-if</h1> 
+            <h1>{{ language['Application using v-if'] }}</h1> 
         </div>
         <div class="element-visibility" >
             <p v-if="visibility"> Element </p>
             <button @click="toggleButton()">
-                {{ visibility ? 'Удалить Element' : 'Добавить Element' }}
+                {{ visibility ? language['Delete Element']: language['Add Element']}}
             </button>
         </div>
         <div class="button-back">
@@ -28,7 +28,10 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }
     },
     methods: {
         ...mapMutations(['setComponentApplication']),

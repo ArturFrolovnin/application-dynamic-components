@@ -4,19 +4,19 @@ export default {
 }
 </script>
 <style>
-.default-font {
+.DefaultFont {
   font-family: var(--application-font-sans-serif);
 }
 
-.roboto {
+.Roboto {
   font-family: var(--application-font-roboto);
 }
 
-.times {
+.Times {
   font-family: var(--application-font-times);
 }
 
-.theme-1 {
+.defaultTheme {
   --application-background-color: rgba(107, 75, 210, 0.95);
   --application-hover-outline: rgb(77, 64, 108);
   --application-color: white;
@@ -25,7 +25,7 @@ export default {
   --application-setting-color: white;
 }
 
-.theme-2 {
+.nonstandard {
   --application-background-color: rgba(67, 125, 212, 0.95);
   --application-hover-outline: rgb(64, 97, 147);
   --application-color: black;
@@ -34,19 +34,19 @@ export default {
   --application-setting-color: black;
 }
 
-.default-fize-font {
+.DefaultSizeFont {
   font-size: var(--application-font-size-defualt);
 }
 
-.large-font-size {
+.largeFontSize {
   font-size: var(--application-font-size-large);
 }
 
-.medium-font-size {
+.mediumFontSize {
   font-size: var(--application-font-size-medium);
 }
 
-.small-font-size {
+.smallFontSize {
   font-size: var(--application-font-size-small);
 }
 </style>

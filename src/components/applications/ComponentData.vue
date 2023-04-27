@@ -1,7 +1,7 @@
 <template>
     <div class="filed-application">
         <div class="title-application" >
-            <h1> приложение с использованием Data </h1> 
+            <h1> {{ language['Application using Data'] }}</h1> 
         </div>
         <div>
             {{ data }}
@@ -25,7 +25,10 @@ export default {
         ButtonBack
     },
     computed: {
-        ...mapState(['ComponentNames'])
+        ...mapState(['ComponentNames', 'languageData', 'componentLanguage']),
+        language() { 
+            return this.languageData[this.componentLanguage.APPLICATIONS] || {}
+        }, 
     },
     methods: {
         ...mapMutations(['setComponentApplication']),
