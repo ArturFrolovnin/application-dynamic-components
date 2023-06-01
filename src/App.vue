@@ -1,8 +1,8 @@
 <template>
-  <div class="application-container" :class="[this.selectedFont, this.selectedSizeFonts, this.selectedTheme]" >
+  <div class="application-container" :class="[this.selectedFont, this.selectedSizeFonts, this.selectedTheme]">
     <HomeComponent />
   </div>
-  <ThemeApplication/>
+  <ThemeApplication />
 </template>
 
 <script>
@@ -16,7 +16,10 @@ export default {
     ThemeApplication
   },
   computed: {
-    ...mapState(["selectedFont", "selectedSizeFonts", "selectedTheme"])
+    ...mapState(["selectedFont",
+      "selectedSizeFonts",
+      "selectedTheme"
+    ])
   }
 }
 </script>
@@ -29,18 +32,22 @@ export default {
   --application-setting-background-color: rgba(135, 110, 217, 0.95);
   --application-setting-hover-outline: rgb(74, 59, 119);
   --application-setting-color: white;
-  --application-font-size-defualt: calc(10px + 5 * (100vw/1980));;
-  --application-font-size-large:  calc(12px + 5 * (100vw/1980));;
-  --application-font-size-medium: calc(10px + 5 * (100vw/1980));;
-  --application-font-size-small:  calc(5px + 5 * (100vw/1980));;
+  --application-font-size-defualt: calc(10px + 5 * (100vw/1980));
+  ;
+  --application-font-size-large: calc(12px + 5 * (100vw/1980));
+  ;
+  --application-font-size-medium: calc(10px + 5 * (100vw/1980));
+  ;
+  --application-font-size-small: calc(5px + 5 * (100vw/1980));
+  ;
   --application-font-sans-serif: Arial;
   --application-font-roboto: "roboto";
   --application-font-times: "Times New Roman";
   --custom-selection-background: rgb(174, 169, 190);
-  --custom-selection-hover-outline:black;
+  --custom-selection-hover-outline: black;
   --dropdown-list-background: rgb(174, 169, 190);
-  --option-dropdown-list-hover:black;
-  --form-application-background-color: rgba(216, 209, 222, 0.706); 
+  --option-dropdown-list-hover: black;
+  --form-application-background-color: rgba(216, 209, 222, 0.706);
   --error-message-color: red;
   --list-notes-item-background-color: white;
   --list-notes-item-color: black;
@@ -67,5 +74,4 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-}
-</style>
+}</style>
